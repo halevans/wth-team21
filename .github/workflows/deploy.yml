@@ -13,5 +13,5 @@ jobs:
         creds: ${{ secrets.LOG_IN_CREDENTIALS }}
     - uses: azure/arm-deploy@v1
       with:
-        resourceGroupName: wth-team21-rg
+        resourceGroupName: ${{ vars.TEAM_21_RESOURCE_GROUPNAME }}
         template: ./InfrastructureAsCode/main.bicep
