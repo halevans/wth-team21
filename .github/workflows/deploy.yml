@@ -7,6 +7,7 @@ jobs:
    build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+    - run: echo  ${{ secrets.LOG_IN_CREDENTIALS }} ${{ vars.TEAM_21_RESOURCE_GROUPNAME }}
     - uses: actions/checkout@master
     - uses: azure/login@v1
       with:
