@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
 
-name: Build-and-deploy
+name: Deploy
 
 jobs:
    build-and-deploy:
@@ -13,7 +13,7 @@ jobs:
         creds: ${{ secrets.LOG_IN_CREDENTIALS }}
     - uses: azure/arm-deploy@v1
       with:
-        resourceGroupName: ${{ github.TEAM_21_RESOURCE_GROUPNAME }}
+        resourceGroupName: ${{ vars.TEAM_21_RESOURCE_GROUPNAME }}
         template: ./azuredeploy.json
         parameters: examples/template/parameters.json storageAccountType=Standard_LRS sqlServerPassword=${{ secrets.SQL_SERVER }}
         additionalArguments: "--what-if --rollback-on-error --what-if-exclude-change-types Create Ignore"
