@@ -4,18 +4,16 @@ on:
 name: Run Azure Login With a Service Principal Secret
 
 jobs:
-
-  build-and-deploy:
+   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    
+    - uses: actions/checkout@master
     - uses: azure/login@v1
       with:
         creds: ${{ secrets.LOG_IN_CREDENTIALS }}
-    
-    - name: Azure CLI script
-      uses: azure/CLI@v1
+    - uses: azure/arm-deploy@v1
       with:
-        azcliversion: latest
-        inlineScript: |
-          az account show
+        resourceGroupName: ${{ github.TEAM_21_RESOURCE_GROUPNAME }}
+        template: ./azuredeploy.json
+        parameters: examples/template/parameters.json storageAccountType=Standard_LRS sqlServerPassword=${{ secrets.SQL_SERVER }}
+        additionalArguments: "--what-if --rollback-on-error --what-if-exclude-change-types Create Ignore"
