@@ -25,8 +25,8 @@ jobs:
       with:
         dotnet-version: 6.0.x
     - name: Restore dependencies
-      run: dotnet restore /Application/RazorPagesTestSample.csproj
+      run: dotnet restore /Application
     - name: Build
-      run: dotnet build /Application/RazorPagesTestSample.csproj --no-restore
+      run: dotnet build /Application --no-restore
     - name: Test
-      run: dotnet test /Application/RazorPagesTestSample.csproj --no-build --verbosity normal
+      run: dotnet test /Application --no-build --verbosity normal
