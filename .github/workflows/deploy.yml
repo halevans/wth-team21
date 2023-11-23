@@ -1,7 +1,7 @@
 on:
   workflow_dispatch:
 
-name: Run Azure Login With a Service Principal Secret
+name: Build-and-deploy
 
 jobs:
    build-and-deploy:
