@@ -1,4 +1,7 @@
-on: []
+name: Manual Trigger Workflow
+
+on:
+  workflow_dispatch:
 
 jobs:
   job1:
